@@ -1,0 +1,82 @@
+---
+title: "A Focused Start"
+author: "Asher Baer"
+output: html_document
+---
+# The End
+I'm sick of guides that don't show where we're going; so, let's start at the end.   
+Below is the essence of everything I do in R. Don't worry, I'll talk you through it.  
+
+```{r echo = T, results = 'hide', error=FALSE, warning=FALSE,  message=FALSE,  fig.show='hide'}
+library(dplyr)
+library(ggplot2)
+
+cars_raw <- read.csv("./Data_To_Use/exampleData.csv")
+
+cars_cleaned <- cars_raw %>% 
+  dplyr::rename("car_model" = X) %>%
+  dplyr::mutate(cylnder_efficiency = mpg/cyl) %>%
+  dplyr::select(car_model, cylnder_efficiency, everything()) 
+
+cars_cleaned %>% ggplot(aes(x = disp , y = cylnder_efficiency)) + geom_point()
+
+cars_cleaned %>% lm(cylnder_efficiency ~ disp, data = .) %>% summary()
+
+cars_cleaned %>% write.csv("./Results/cars_cleaned_customWhateverName.csv")
+```
+This is the universal high-level workflow : Import -> Clean -> Examine -> Save Results.
+
+
+What's going on here? Let's talk thru it in order of what I did, and what the code sees.
+
+Step-by-step:   
+1. Bring in additional functions (through packages)   
+2. Read in data stored locally   
+2.5 Save that data   
+3. "Clean" the data   
+3.5 Do something row-wise to the data   
+4. Save the cleaned data   
+5. Visualize + Do a statistical test   
+6. Save the Cleaned Data   
+
+# In Detail, this time
+
+```{r echo = T, results = 'hide', error=FALSE, warning=FALSE,  message=FALSE,  fig.show='hide'}
+##NOTE:: "#" indicates a comment, or text that is ignored. 
+# 1. "library" brings in pre-installed packages off functions we will use. Here, they are "dplyr" and "ggplot2"
+library(dplyr)
+library(ggplot2)
+
+#2. "read.csv" is a function that takes in a "path" to some data. 
+## PATH? Relative to the file, what other files to click to get to something. 
+## "./" means relative. /Data_To_Use looks in Data_To_Use and "exampleData.csv" is selected
+
+#3. "<-" takes the data from the CSV and saves it into a variable called "cars_raw". We could name this whatever
+cars_raw <- read.csv("./Data_To_Use/exampleData.csv")
+
+#Save everything that is done to "cars_cleaned"
+cars_cleaned <- cars_raw %>% 
+  #Rename the column X to "car_model", then
+  dplyr::rename("car_model" = X) %>%
+  #Create a new column cylinder_efficiency where each value is the value from the mpg columns divided by the cyl columns, then
+  dplyr::mutate(cylnder_efficiency = mpg/cyl) %>%
+  #take the car_model column, the cylinder_efficiency column, then saves it (go back to top)
+  dplyr::select(car_model, cylnder_efficiency, everything()) 
+
+#take cars_cleaned, then
+cars_cleaned %>% 
+  #create a plot with the x axis as displ and the y as cylinder_efficiency
+  ggplot(aes(x = disp , y = cylnder_efficiency)) +
+  #view it as a scatter plot
+  geom_point()
+
+cars_cleaned %>% 
+  #linear regression with Depedent as cylnder_efficiency and independent as disp
+  lm(cylnder_efficiency ~ disp, data = .) %>% 
+  #then visualize
+  summary()
+
+cars_cleaned %>% 
+  #save the results
+  write.csv("./Results/cars_cleaned_customWhateverName.csv")
+```

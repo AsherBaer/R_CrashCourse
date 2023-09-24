@@ -1,0 +1,44 @@
+---
+title: "Appendix++"
+author: "Asher Baer"
+output: html_document
+---
+## Appendix? 
+Sorta.    
+   
+"Vigorous writing is concise" and I have striven to provide a guide to R that is uniquely to the point;
+however, I recognize there are maybe some worthwhile details lacking--as well as humour.
+Hence, this document is created.
+
+## Other Resources
+
+### Using R 
+As mentioned, Googling and Stack Overflow, as well as the well positioned Twitter post are your best 
+friends in answering R questions.   
+
+Hadley's Intro to R is excellent.   
+
+## Why R?
+
+I'm not a CS expert, only a half addict. However, there are some theoretical benefits to R:    
+1. It's open source, and the R-Foundation is a public benefit company--meaning they won't revoke it for profit.    
+2. A lot of academic papers get converted into R packages, giving you access to some very technical tools    
+3. In my mind: Readibility. The pipe feature, and minimal Objects mean you can read a document linearly.    
+4. It's base C++! That's fast Baby. Are other things faster? Like Julia? Probably, I haven't tried it, but I've heard. 
+
+Q: Why did YOU learn R?   
+A: I had to for class. I loved the class.   
+    
+Q: Why not python?   
+A: Bc I'm better at R than python, so I wrote this guide. I use python too! Especially for Torch.
+
+Q: Why the Dumb Title?    
+A: "I Hadley Know R" is supposed to be a recreation of the joke "I hardly know her?" since my friend Kim finds it dorky.   
+Example: "Sewer? I hardly know her"   
+
+# R Studio Sound Track (objectively improves results)
+
+Persona 5 Royal Soundtrack   
+Pokemon Battle Revolution OST   
+The Great Sea -- Wind Waker 
+Overworld Theme -- Spirit Tracks

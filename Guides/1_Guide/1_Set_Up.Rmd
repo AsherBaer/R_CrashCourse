@@ -1,0 +1,50 @@
+---
+title: "1 Set Up"
+author: "Asher Baer"
+output: html_document
+---
+
+### Overview
+
+The goal of this document is to get you set-up so you can start using, and learning R.\
+It is important to feel you have a comfortable place to experiment. Let's walk thru it.
+
+### Start : Nothing
+
+At this point you should have nothing at all installed. Great!
+
+We're going to install onto your computer two things:    
+1. R Programming Language. (Meaning: Someplace on your computer text is interpreted as R)   
+2. R Studio, an IDE. (Meaning: A place to write R and run it)   
+
+Go here for R : https://cran.r-project.org/    
+Go here for R Studio :   https://posit.co/download/rstudio-desktop/    
+
+##### Install Notes    
+
+I'm currently using R 4.3. ish. Any stable version is good.   
+
+### Part 2: Setting Up the IDE
+
+When you open R it should look something like this : 
+```{r}
+
+```
+
+Click File -> New File -> R-Markdown File. 
+Hit yes on everything, name it whatever. 
+
+Great, now you should see this:
+
+
+### Part 2.1:
+
+Making R-Studio your home   .
+
+### Part 2.2: Intro to Workflow and Where to Think
+
+
+### Part 3: How to R:
+
+
+
