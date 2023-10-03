@@ -30,7 +30,7 @@ Q: Why did YOU learn R?
 A: I had to for class. I loved the class.   
     
 Q: Why not python?   
-A: Bc I'm better at R than python, so I wrote this guide. I use python too! Especially for Torch.
+A: Bc I'm better at R than python, so I wrote this guide. I use python too! Especially for Torch.   
 
 Q: Why the Dumb Title?    
 A: "I Hadley Know R" is supposed to be a recreation of the joke "I hardly know her?" since my friend Kim finds it dorky.   
