@@ -45,8 +45,20 @@ Making R-Studio your home.
 
 ### Part 2.2: Intro to Workflow and Where to Think
 
+Briefly, I do most of my work in R as a long script. Instead of using callable .R files, I work in 
+noteooks (like this one), where I can code inside "chunks"
+To start a chunk type ```{r} everything inbetween will be r code. Everything outside will be a markdown file. 
 
-### Part 3: How to R:
+```{r}
+#I am a happy little chunk of r code
 
+chunk_code = 1
+```
+
+```{r}
+#I am in the next chunk, but am in the global environment
+print(chunk_code)
+
+```
 
 
