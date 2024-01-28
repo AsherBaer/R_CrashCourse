@@ -6,3 +6,129 @@ output: html_document
 
 ### Overview
 
+The goal of this document is to give a quick-start with more detail for people who do not typically code.
+
+### Running Things
+
+You can run R-code as either a .R or .Rmd file.\
+A .R file is an executable, i.e. it will be called and run line-by-line, usually by itself or in a different program.\
+A .Rmd file is a notebook, which lets you have "chunks" of code between text. We will work in .Rmds.\
+\
+An R-Chunk is everything within 3 ` and {r}.
+```{r}
+#I am an R chunk!
+## If you are confused, the "#" means a comment or something that the code ignores. I can say whatever here.
+```
+Here, you can run your R-Code. You have the option to run an individual chunk, or all chunks sequentially.
+
+### What to Run
+A lot of our work will be broken down into variables and functions.\
+Variables: Things that hold data. (nouns)\
+Functions: Things that do things to data. (verbs)\
+
+#### Variables
+Naturally, R is used for numbers. Let's start here.
+"Declare" or make a variable by typing it and giving it a value.\
+Give it a value with "=" or with left-arrow key and dash (make a little arrow)
+```{r}
+##Inside the mystical world of an R-Chunk...
+#This variable, called "variable_name_whatever" has the value of 3 stored in it.
+variable_name_whatever = 3
+#This variable called "x" has the value of 4 stored in it.
+x <- 4
+
+# "print" is a function that takes the variable, looks inside, and displays the result
+print(variable_name_whatever)
+```
+
+Variables persist between R Chunks, and can interact.
+```{r}
+print(x)
+```
+Variables can be re-assigned
+```{r}
+variable_name_whatever <- 5
+print(variable_name_whatever)
+```
+
+#### Functions
+Functions are things you type that take input and give output.\
+Their inputs are put inside parenthesis, and in the case of multiple inputs, specified directly.
+
+```{r}
+#Print takes one input
+print(3)
+# "+" is a function that takes 2
+print(3+3)
+```
+Functions can take variables as inputs; their outputs can be stored as new variables
+```{r}
+#Read this as : create a new variable called "new_variable" then take the number in "variable_name_whatever" add 3, save the result in new_variable
+new_variable <- variable_name_whatever + 3
+print(new_variable)
+```
+#### A little bit more detail
+Variables themselves, as well as functions, fall into categories. These categories are called types and let us do things.
+Without bogging down in the detail, I will list out the basic types (called primitive types).
+
+```{r, results = "hold"}
+#Integer: Just a whole number. Can be negative.
+3
+-3
+#Double: Numbers with decimal points
+3.0
+1.2
+-1.3
+#"Character" : text
+"Hello, I am a list of text, code sees me!"
+print("Text me")
+#"Logical" or Boolean: a T/F value. 
+TRUE
+T
+```
+Additionally, there is also one called "factor" which means a list of possible options. We will talk about this later.
+
+##### Non-Primative Types
+
+###### Lists
+A list is simply a series of elements.\
+```{r, results = "hold"}
+#A list is initlaized using "c()" where everything in the quotes is an element.
+I_am_a_list <- c(3, "4", x)
+print(I_am_a_list)
+```
+Some more complex types exist, such as tables or data-frames (tables) that let us do more things.\
+\
+###### Important one: Data-Frame
+```{r}
+#A dataframe is simply a table that knows it's columns have types.
+
+column_one = c(3,4)
+column_two = c("dog", "cat")
+
+#the data.frame function here takes in two lists, and turns them into columns.
+dataframe_thingy <- data.frame(column_one, column_two)
+print(dataframe_thingy)
+```
+Note: You may be reading this thinking, "will I be needing to make data, type it into a list, then use that list to make a data-frame? That seems like a lot of work!!\
+Answer: NO!! Or not usually. A dataframe is a table, and naturally, we can bring in data to make the dataframe.
+
+### Pause : Some tips for figuring things out.
+
+```{r}
+#You can always use the function "typeof()" to check R thinks a variable is.
+typeof("hi")
+#You can always use ? or ?? on a function to bring up explanations for how it works and what it expects.
+?data.frame #This will only come up in R-Studio under "help"
+```
+
+### Doing Real Work
+Okay, at this point you should know a few things: \
+Variables hold data\
+Some variables are basically tables\
+Functions do things to data, and expect specific types of data to work\
+\
+Great, but let's do some examples that show how work actually can be.
+
+
+

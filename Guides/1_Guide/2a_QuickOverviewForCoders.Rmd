@@ -2,19 +2,27 @@
 title: "2a Overview For Coders"
 author: "Asher Baer"
 output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 ### Overview
-The goal of this document is to give a quick-start with more detail for people experienced in CS.
-Meaing C++, C#, or whatever else.\
 
+The goal of this document is to give a quick-start with more detail for
+people experienced in CS. Meaning C++, Java, Python, etc.\
 
-#### Variable
-Declare a variable by typing anything without quotes.Must not start with a number.\
-Must either give it a blank object or simply have an object you want to put into it.\
-Use either = or less-than with a minus symbol. 
+### Variables
 
-By default, everything will be in the global scope (unless declared in a function).
+Declare a variable by typing anything without quotes.Must not start with
+a number.\
+Must either give it a blank object or simply have an object you want to
+put into it.\
+Use either = or less-than with a minus symbol.
+
+By default, everything will be in the global scope (unless declared in a
+function).
+
 ```{r}
 ##Examples
 babys_first_variable.periods_mean_nothing = 2
@@ -29,14 +37,18 @@ y + x
 rm(x)
 ```
 
-### Types? 
-R is functional, but objects can have types. There are a few main ones, that will be familiar and obvious.\
+### Types?
+
+R is functional, but objects can have types. There are a few main ones,
+that will be familiar and obvious.\
 1. Integer\
 2. Double (like a float)\
-3. Character (not just a single character, it's a string in other languages)\
+3. Character (not just a single character, it's a string in other
+languages)\
 4. Factor (basically an enum)\
 5. logical (boolean)\
 6. Others not useful for now(Raw/Complex types)\
+
 ```{r}
 x = as.integer(1)
 typeof(x)
@@ -48,10 +60,12 @@ typeof(TRUE)
 ```
 
 ### Lists
-to make a list, put it inside a c()\ 
-so, c(1,2,3) is a list of 3 elements.
+
+to make a list, put it inside a c()  so, c(1,2,3) is a list of 3
+elements.
 
 indexing starts at 1!
+
 ```{r}
 x = c("hi", "there")
 x[1]
@@ -63,16 +77,23 @@ print(x)
 ```
 
 ### Dataframes
+
 This will be your bread and butter doing data-science in R.\
-A dataframe is effectively a matrix, spreadsheet, or series of columns put together.\
-Each column can have it's own type. Let's look at one of the default ones.
+A dataframe is effectively a matrix, spreadsheet, or series of columns
+put together.\
+Each column can have it's own type. Let's look at one of the default
+ones.
+
 ```{r}
 print(mtcars)
 ```
-We can treat dataframes as objects and save them in variables. In fact, much of the data-cleaning process
-will be done by doing something to a data-frame, then saving the output in a variable.
 
-We can index a dataframe 
+We can treat dataframes as objects and save them in variables. In fact,
+much of the data-cleaning process will be done by doing something to a
+data-frame, then saving the output in a variable.
+
+We can index a dataframe
+
 ```{r}
 row_index = 3
 column_index = 2
@@ -83,9 +104,12 @@ print(mtcars[, column_index])
 #or the row as a 1 x ncol data-frame
 print(mtcars[row_index, ])
 ```
+
 ### Functions
-functions are defined with "function()" then list the input variables. 
+
+functions are defined with "function()" then list the input variables.
 Return values with "return()"
+
 ```{r}
 #
 function_whatever_name <- function(input_whatever_var){
@@ -97,45 +121,63 @@ function_whatever_name <- function(input_whatever_var){
 
 function_whatever_name(2)
 ```
+
 # Now let's get started
 
-
 ### To the point
-This has been a useful starting point looking at base R. However, much is done using a great package called the tidyverse.\
 
+This has been a useful starting point looking at base R. However, much
+is done using a great package called the tidyverse.\
 
 #### Install
-To install a package in R, go over to the bottom right panel, click "packages", then "install", then type in "dplyr"
 
-To load a package, type in library(package_name).It will be loaded globally, and gie some conflict warnings.
+To install a package in R, go over to the bottom right panel, click
+"packages", then "install", then type in "dplyr"
+
+To load a package, type in library(package_name).It will be loaded
+globally, and give some conflict warnings.
+
 ```{r}
 library(dplyr)
 ```
-To call a function from a package, you can specific it using package::function
+
+To call a function from a package, you can specific it using
+package::function
+
 ```{r}
 #select takes a dataframe, then keeps some of the columns you selected
 dplyr::select(mtcars,1)
 ```
 
 ### Pipes
-The last fundamental thing to really know is the pipe operator. Written as %>%, it can be read as "and then"\
-Basically, it take the output of the last function and uses it as the input for the next. If you want to specify where 
-as an argument it should be used, technically it can be done with the period, .\
+
+The last fundamental thing to really know is the pipe operator. Written
+as %\>%, it can be read as "and then"\
+Basically, it take the output of the last function and uses it as the
+input for the next. If you want to specify where as an argument it
+should be used, technically it can be done with the period, .\
 
 ```{r}
 mtcars %>% dplyr::select(1)
 mtcars %>% dplyr::select(.,1)
 ```
+
 ### Some dplyr bread and butter functions
-We want to manipulate dataframes since it is our way of storing data, interacting with it, and doing things at scale.\
+
+We want to manipulate dataframes since it is our way of storing data,
+interacting with it, and doing things at scale.\
 Below are some key functions I use a lot.\
-1. dplyr::mutate -- changes the column or creates a new one if that rows is not there\
+1. dplyr::mutate -- changes the column or creates a new one if that rows
+is not there\
 2. dplyr::case_when -- if else but can be used in mutate\
-3. dplyr::filter -- used to keep rows based on a condition (needs a logical)\
+3. dplyr::filter -- used to keep rows based on a condition (needs a
+logical)\
 4. dplyr::select -- keeps columns, based on names\
-5. dplyr::full_join or dplyr::left_join -- joins two dataframes together\
-6. dplyr::summarize -- lets you do operations across all rows. any function, even user defined
-7. dplyr::group_by -- decides which rows to treat as the same for various operations, like summarize
+5. dplyr::full_join or dplyr::left_join -- joins two dataframes
+together\
+6. dplyr::summarize -- lets you do operations across all rows. any
+function, even user defined 7. dplyr::group_by -- decides which rows to
+treat as the same for various operations, like summarize
 
 ```{r}
 #save the output in this mt_cars_changed
@@ -165,7 +207,9 @@ final_df <- mt_cars_changed %>%
   #select mpg, mean_hp, number_of_rows, then everything else
   dplyr::select(mpg, mean_hp, number_of_rows, everything())
 ```
+
 #### Visuals
+
 Base R has some good options with the "plot" function.\
 ggplot2 has some great stuff that works with dplyr.
 
@@ -174,13 +218,24 @@ library(ggplot2)
 
 final_df %>% 
   ggplot(aes(x = mpg, y = cyl, color = mean_hp)) + geom_point()
-
 ```
 
 #### Problem Solving in R
-It should be noted any function's documentation can be brought up on the bottom right by typing ?function.\
-??function will bring up all instances of it in packages installed, but not currently loaded into the environment.
+
+It should be noted any function's documentation can be brought up on the
+bottom right by typing ?function.\
+??function will bring up all instances of it in packages installed, but
+not currently loaded into the environment.
+
 ```{r}
 ?as.numeric
 ??as.numeric
+```
+
+#### Obligatory
+
+```{r}
+variable_carrying_thing <- "hello_world"
+print("hello world")
+print(variable_carrying_thing)
 ```

@@ -12,7 +12,7 @@
 <meta name="author" content="Asher Baer" />
 
 
-<title>2a Overview For Coders</title>
+<title>2 Quick Overview</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -349,7 +349,7 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">2a Overview For Coders</h1>
+<h1 class="title toc-ignore">2 Quick Overview</h1>
 <h4 class="author">Asher Baer</h4>
 
 </div>
@@ -358,382 +358,152 @@ display: none;
 <div id="overview" class="section level3">
 <h3>Overview</h3>
 <p>The goal of this document is to give a quick-start with more detail
-for people experienced in CS. Meaning C++, Java, Python, etc.<br />
-</p>
+for people who do not typically code.</p>
 </div>
-<div id="variables" class="section level3">
-<h3>Variables</h3>
-<p>Declare a variable by typing anything without quotes.Must not start
-with a number.<br />
-Must either give it a blank object or simply have an object you want to
-put into it.<br />
-Use either = or less-than with a minus symbol.</p>
-<p>By default, everything will be in the global scope (unless declared
-in a function).</p>
-<pre class="r"><code>##Examples
-babys_first_variable.periods_mean_nothing = 2
-print(babys_first_variable.periods_mean_nothing + 2)</code></pre>
+<div id="running-things" class="section level3">
+<h3>Running Things</h3>
+<p>You can run R-code as either a .R or .Rmd file.<br />
+A .R file is an executable, i.e. it will be called and run line-by-line,
+usually by itself or in a different program.<br />
+A .Rmd file is a notebook, which lets you have “chunks” of code between
+text. We will work in .Rmds.<br />
+<br />
+An R-Chunk is everything within 3 ` and {r}.</p>
+<pre class="r"><code>#I am an R chunk!
+## If you are confused, the &quot;#&quot; means a comment or something that the code ignores. I can say whatever here.</code></pre>
+<p>Here, you can run your R-Code. You have the option to run an
+individual chunk, or all chunks sequentially.</p>
+</div>
+<div id="what-to-run" class="section level3">
+<h3>What to Run</h3>
+<p>A lot of our work will be broken down into variables and
+functions.<br />
+Variables: Things that hold data. (nouns)<br />
+Functions: Things that do things to data. (verbs)<br />
+</p>
+<div id="variables" class="section level4">
+<h4>Variables</h4>
+<p>Naturally, R is used for numbers. Let’s start here. “Declare” or make
+a variable by typing it and giving it a value.<br />
+Give it a value with “=” or with left-arrow key and dash (make a little
+arrow)</p>
+<pre class="r"><code>##Inside the mystical world of an R-Chunk...
+#This variable, called &quot;variable_name_whatever&quot; has the value of 3 stored in it.
+variable_name_whatever = 3
+#This variable called &quot;x&quot; has the value of 4 stored in it.
+x &lt;- 4
+
+# &quot;print&quot; is a function that takes the variable, looks inside, and displays the result
+print(variable_name_whatever)</code></pre>
+<pre><code>## [1] 3</code></pre>
+<p>Variables persist between R Chunks, and can interact.</p>
+<pre class="r"><code>print(x)</code></pre>
 <pre><code>## [1] 4</code></pre>
-<pre class="r"><code>x = babys_first_variable.periods_mean_nothing + 2
-print(x + babys_first_variable.periods_mean_nothing)</code></pre>
+<p>Variables can be re-assigned</p>
+<pre class="r"><code>variable_name_whatever &lt;- 5
+print(variable_name_whatever)</code></pre>
+<pre><code>## [1] 5</code></pre>
+</div>
+<div id="functions" class="section level4">
+<h4>Functions</h4>
+<p>Functions are things you type that take input and give output.<br />
+Their inputs are put inside parenthesis, and in the case of multiple
+inputs, specified directly.</p>
+<pre class="r"><code>#Print takes one input
+print(3)</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code># &quot;+&quot; is a function that takes 2
+print(3+3)</code></pre>
 <pre><code>## [1] 6</code></pre>
-<pre class="r"><code>y&lt;-16
-y + x</code></pre>
-<pre><code>## [1] 20</code></pre>
-<pre class="r"><code>rm(x)</code></pre>
+<p>Functions can take variables as inputs; their outputs can be stored
+as new variables</p>
+<pre class="r"><code>#Read this as : create a new variable called &quot;new_variable&quot; then take the number in &quot;variable_name_whatever&quot; add 3, save the result in new_variable
+new_variable &lt;- variable_name_whatever + 3
+print(new_variable)</code></pre>
+<pre><code>## [1] 8</code></pre>
 </div>
-<div id="types" class="section level3">
-<h3>Types?</h3>
-<p>R is functional, but objects can have types. There are a few main
-ones, that will be familiar and obvious.<br />
-1. Integer<br />
-2. Double (like a float)<br />
-3. Character (not just a single character, it’s a string in other
-languages)<br />
-4. Factor (basically an enum)<br />
-5. logical (boolean)<br />
-6. Others not useful for now(Raw/Complex types)<br />
+<div id="a-little-bit-more-detail" class="section level4">
+<h4>A little bit more detail</h4>
+<p>Variables themselves, as well as functions, fall into categories.
+These categories are called types and let us do things. Without bogging
+down in the detail, I will list out the basic types (called primitive
+types).</p>
+<pre class="r"><code>#Integer: Just a whole number. Can be negative.
+3
+-3
+#Double: Numbers with decimal points
+3.0
+1.2
+-1.3
+#&quot;Character&quot; : text
+&quot;Hello, I am a list of text, code sees me!&quot;
+print(&quot;Text me&quot;)
+#&quot;Logical&quot; or Boolean: a T/F value. 
+TRUE
+T</code></pre>
+<pre><code>## [1] 3
+## [1] -3
+## [1] 3
+## [1] 1.2
+## [1] -1.3
+## [1] &quot;Hello, I am a list of text, code sees me!&quot;
+## [1] &quot;Text me&quot;
+## [1] TRUE
+## [1] TRUE</code></pre>
+<p>Additionally, there is also one called “factor” which means a list of
+possible options. We will talk about this later.</p>
+<div id="non-primative-types" class="section level5">
+<h5>Non-Primative Types</h5>
+<div id="lists" class="section level6">
+<h6>Lists</h6>
+<p>A list is simply a series of elements.<br />
 </p>
-<pre class="r"><code>x = as.integer(1)
-typeof(x)</code></pre>
-<pre><code>## [1] &quot;integer&quot;</code></pre>
-<pre class="r"><code>x = 1.5
-typeof(x)</code></pre>
-<pre><code>## [1] &quot;double&quot;</code></pre>
-<pre class="r"><code>typeof(TRUE)</code></pre>
-<pre><code>## [1] &quot;logical&quot;</code></pre>
-</div>
-<div id="lists" class="section level3">
-<h3>Lists</h3>
-<p>to make a list, put it inside a c()  so, c(1,2,3) is a list of 3
-elements.</p>
-<p>indexing starts at 1!</p>
-<pre class="r"><code>x = c(&quot;hi&quot;, &quot;there&quot;)
-x[1]</code></pre>
-<pre><code>## [1] &quot;hi&quot;</code></pre>
-<pre class="r"><code>x[2]</code></pre>
-<pre><code>## [1] &quot;there&quot;</code></pre>
-<pre class="r"><code>x[3]</code></pre>
-<pre><code>## [1] NA</code></pre>
-<pre class="r"><code>x[4] = 12
-print(x)</code></pre>
-<pre><code>## [1] &quot;hi&quot;    &quot;there&quot; NA      &quot;12&quot;</code></pre>
-</div>
-<div id="dataframes" class="section level3">
-<h3>Dataframes</h3>
-<p>This will be your bread and butter doing data-science in R.<br />
-A dataframe is effectively a matrix, spreadsheet, or series of columns
-put together.<br />
-Each column can have it’s own type. Let’s look at one of the default
-ones.</p>
-<pre class="r"><code>print(mtcars)</code></pre>
-<pre><code>##                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb
-## Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
-## Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
-## Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
-## Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
-## Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
-## Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
-## Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
-## Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
-## Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
-## Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
-## Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
-## Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
-## Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
-## Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
-## Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
-## Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
-## Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
-## Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
-## Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
-## Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
-## Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
-## Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
-## AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
-## Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
-## Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
-## Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
-## Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
-## Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
-## Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
-## Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
-## Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
-## Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
-<p>We can treat dataframes as objects and save them in variables. In
-fact, much of the data-cleaning process will be done by doing something
-to a data-frame, then saving the output in a variable.</p>
-<p>We can index a dataframe</p>
-<pre class="r"><code>row_index = 3
-column_index = 2
+<pre class="r"><code>#A list is initlaized using &quot;c()&quot; where everything in the quotes is an element.
+I_am_a_list &lt;- c(3, &quot;4&quot;, x)
+print(I_am_a_list)</code></pre>
+<pre><code>## [1] &quot;3&quot; &quot;4&quot; &quot;4&quot;</code></pre>
+<p>Some more complex types exist, such as tables or data-frames (tables)
+that let us do more things.<br />
+<br />
+###### Important one: Data-Frame</p>
+<pre class="r"><code>#A dataframe is simply a table that knows it&#39;s columns have types.
 
-print(mtcars[row_index, column_index])</code></pre>
-<pre><code>## [1] 4</code></pre>
-<pre class="r"><code>## we can get the column as a list easily
-print(mtcars[, column_index])</code></pre>
-<pre><code>##  [1] 6 6 4 6 8 6 8 4 4 6 6 8 8 8 8 8 8 4 4 4 4 8 8 8 8 4 4 4 8 6 8 4</code></pre>
-<pre class="r"><code>#or the row as a 1 x ncol data-frame
-print(mtcars[row_index, ])</code></pre>
-<pre><code>##             mpg cyl disp hp drat   wt  qsec vs am gear carb
-## Datsun 710 22.8   4  108 93 3.85 2.32 18.61  1  1    4    1</code></pre>
-</div>
-<div id="functions" class="section level3">
-<h3>Functions</h3>
-<p>functions are defined with “function()” then list the input
-variables. Return values with “return()”</p>
-<pre class="r"><code>#
-function_whatever_name &lt;- function(input_whatever_var){
-  print(input_whatever_var)
-  if(is.numeric(input_whatever_var)){print(&quot;I&#39;m a numeric too!&quot;)
-    }
-  return(input_whatever_var)
-}
+column_one = c(3,4)
+column_two = c(&quot;dog&quot;, &quot;cat&quot;)
 
-function_whatever_name(2)</code></pre>
-<pre><code>## [1] 2
-## [1] &quot;I&#39;m a numeric too!&quot;</code></pre>
-<pre><code>## [1] 2</code></pre>
-</div>
-<div id="now-lets-get-started" class="section level1">
-<h1>Now let’s get started</h1>
-<div id="to-the-point" class="section level3">
-<h3>To the point</h3>
-<p>This has been a useful starting point looking at base R. However,
-much is done using a great package called the tidyverse.<br />
-</p>
-<div id="install" class="section level4">
-<h4>Install</h4>
-<p>To install a package in R, go over to the bottom right panel, click
-“packages”, then “install”, then type in “dplyr”</p>
-<p>To load a package, type in library(package_name).It will be loaded
-globally, and give some conflict warnings.</p>
-<pre class="r"><code>library(dplyr)</code></pre>
-<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 4.3.1</code></pre>
-<pre><code>## 
-## Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union</code></pre>
-<p>To call a function from a package, you can specific it using
-package::function</p>
-<pre class="r"><code>#select takes a dataframe, then keeps some of the columns you selected
-dplyr::select(mtcars,1)</code></pre>
-<pre><code>##                      mpg
-## Mazda RX4           21.0
-## Mazda RX4 Wag       21.0
-## Datsun 710          22.8
-## Hornet 4 Drive      21.4
-## Hornet Sportabout   18.7
-## Valiant             18.1
-## Duster 360          14.3
-## Merc 240D           24.4
-## Merc 230            22.8
-## Merc 280            19.2
-## Merc 280C           17.8
-## Merc 450SE          16.4
-## Merc 450SL          17.3
-## Merc 450SLC         15.2
-## Cadillac Fleetwood  10.4
-## Lincoln Continental 10.4
-## Chrysler Imperial   14.7
-## Fiat 128            32.4
-## Honda Civic         30.4
-## Toyota Corolla      33.9
-## Toyota Corona       21.5
-## Dodge Challenger    15.5
-## AMC Javelin         15.2
-## Camaro Z28          13.3
-## Pontiac Firebird    19.2
-## Fiat X1-9           27.3
-## Porsche 914-2       26.0
-## Lotus Europa        30.4
-## Ford Pantera L      15.8
-## Ferrari Dino        19.7
-## Maserati Bora       15.0
-## Volvo 142E          21.4</code></pre>
+#the data.frame function here takes in two lists, and turns them into columns.
+dataframe_thingy &lt;- data.frame(column_one, column_two)
+print(dataframe_thingy)</code></pre>
+<pre><code>##   column_one column_two
+## 1          3        dog
+## 2          4        cat</code></pre>
+<p>Note: You may be reading this thinking, “will I be needing to make
+data, type it into a list, then use that list to make a data-frame? That
+seems like a lot of work!!<br />
+Answer: NO!! Or not usually. A dataframe is a table, and naturally, we
+can bring in data to make the dataframe.</p>
 </div>
 </div>
-<div id="pipes" class="section level3">
-<h3>Pipes</h3>
-<p>The last fundamental thing to really know is the pipe operator.
-Written as %&gt;%, it can be read as “and then”<br />
-Basically, it take the output of the last function and uses it as the
-input for the next. If you want to specify where as an argument it
-should be used, technically it can be done with the period, .<br />
-</p>
-<pre class="r"><code>mtcars %&gt;% dplyr::select(1)</code></pre>
-<pre><code>##                      mpg
-## Mazda RX4           21.0
-## Mazda RX4 Wag       21.0
-## Datsun 710          22.8
-## Hornet 4 Drive      21.4
-## Hornet Sportabout   18.7
-## Valiant             18.1
-## Duster 360          14.3
-## Merc 240D           24.4
-## Merc 230            22.8
-## Merc 280            19.2
-## Merc 280C           17.8
-## Merc 450SE          16.4
-## Merc 450SL          17.3
-## Merc 450SLC         15.2
-## Cadillac Fleetwood  10.4
-## Lincoln Continental 10.4
-## Chrysler Imperial   14.7
-## Fiat 128            32.4
-## Honda Civic         30.4
-## Toyota Corolla      33.9
-## Toyota Corona       21.5
-## Dodge Challenger    15.5
-## AMC Javelin         15.2
-## Camaro Z28          13.3
-## Pontiac Firebird    19.2
-## Fiat X1-9           27.3
-## Porsche 914-2       26.0
-## Lotus Europa        30.4
-## Ford Pantera L      15.8
-## Ferrari Dino        19.7
-## Maserati Bora       15.0
-## Volvo 142E          21.4</code></pre>
-<pre class="r"><code>mtcars %&gt;% dplyr::select(.,1)</code></pre>
-<pre><code>##                      mpg
-## Mazda RX4           21.0
-## Mazda RX4 Wag       21.0
-## Datsun 710          22.8
-## Hornet 4 Drive      21.4
-## Hornet Sportabout   18.7
-## Valiant             18.1
-## Duster 360          14.3
-## Merc 240D           24.4
-## Merc 230            22.8
-## Merc 280            19.2
-## Merc 280C           17.8
-## Merc 450SE          16.4
-## Merc 450SL          17.3
-## Merc 450SLC         15.2
-## Cadillac Fleetwood  10.4
-## Lincoln Continental 10.4
-## Chrysler Imperial   14.7
-## Fiat 128            32.4
-## Honda Civic         30.4
-## Toyota Corolla      33.9
-## Toyota Corona       21.5
-## Dodge Challenger    15.5
-## AMC Javelin         15.2
-## Camaro Z28          13.3
-## Pontiac Firebird    19.2
-## Fiat X1-9           27.3
-## Porsche 914-2       26.0
-## Lotus Europa        30.4
-## Ford Pantera L      15.8
-## Ferrari Dino        19.7
-## Maserati Bora       15.0
-## Volvo 142E          21.4</code></pre>
 </div>
-<div id="some-dplyr-bread-and-butter-functions" class="section level3">
-<h3>Some dplyr bread and butter functions</h3>
-<p>We want to manipulate dataframes since it is our way of storing data,
-interacting with it, and doing things at scale.<br />
-Below are some key functions I use a lot.<br />
-1. dplyr::mutate – changes the column or creates a new one if that rows
-is not there<br />
-2. dplyr::case_when – if else but can be used in mutate<br />
-3. dplyr::filter – used to keep rows based on a condition (needs a
-logical)<br />
-4. dplyr::select – keeps columns, based on names<br />
-5. dplyr::full_join or dplyr::left_join – joins two dataframes
-together<br />
-6. dplyr::summarize – lets you do operations across all rows. any
-function, even user defined 7. dplyr::group_by – decides which rows to
-treat as the same for various operations, like summarize</p>
-<pre class="r"><code>#save the output in this mt_cars_changed
-mt_cars_changed &lt;- mtcars %&gt;%
-  #create a new column
-  dplyr::mutate(new_col = 1) %&gt;%
-  #multiple that column by two, and add the value of vs rowwise
-  dplyr::mutate(new_col = new_col*2 + vs) %&gt;%
-  #select new_col, mpg, mpg cyl, and all columns that are numeric
-  dplyr::select(new_col, mpg, cyl, where(is.numeric)) %&gt;%
-  #only keep rows where the mpg &gt; 5
-  dplyr::filter(mpg &gt; 5) %&gt;%
-  #round the mpg to 2 digits
-  dplyr::mutate(mpg = round(mpg, 0)) %&gt;%
-  #conver the mpg column into a character
-  dplyr::mutate(mpg = as.character(mpg))
-print(mt_cars_changed)</code></pre>
-<pre><code>##                     new_col mpg cyl  disp  hp drat    wt  qsec vs am gear carb
-## Mazda RX4                 2  21   6 160.0 110 3.90 2.620 16.46  0  1    4    4
-## Mazda RX4 Wag             2  21   6 160.0 110 3.90 2.875 17.02  0  1    4    4
-## Datsun 710                3  23   4 108.0  93 3.85 2.320 18.61  1  1    4    1
-## Hornet 4 Drive            3  21   6 258.0 110 3.08 3.215 19.44  1  0    3    1
-## Hornet Sportabout         2  19   8 360.0 175 3.15 3.440 17.02  0  0    3    2
-## Valiant                   3  18   6 225.0 105 2.76 3.460 20.22  1  0    3    1
-## Duster 360                2  14   8 360.0 245 3.21 3.570 15.84  0  0    3    4
-## Merc 240D                 3  24   4 146.7  62 3.69 3.190 20.00  1  0    4    2
-## Merc 230                  3  23   4 140.8  95 3.92 3.150 22.90  1  0    4    2
-## Merc 280                  3  19   6 167.6 123 3.92 3.440 18.30  1  0    4    4
-## Merc 280C                 3  18   6 167.6 123 3.92 3.440 18.90  1  0    4    4
-## Merc 450SE                2  16   8 275.8 180 3.07 4.070 17.40  0  0    3    3
-## Merc 450SL                2  17   8 275.8 180 3.07 3.730 17.60  0  0    3    3
-## Merc 450SLC               2  15   8 275.8 180 3.07 3.780 18.00  0  0    3    3
-## Cadillac Fleetwood        2  10   8 472.0 205 2.93 5.250 17.98  0  0    3    4
-## Lincoln Continental       2  10   8 460.0 215 3.00 5.424 17.82  0  0    3    4
-## Chrysler Imperial         2  15   8 440.0 230 3.23 5.345 17.42  0  0    3    4
-## Fiat 128                  3  32   4  78.7  66 4.08 2.200 19.47  1  1    4    1
-## Honda Civic               3  30   4  75.7  52 4.93 1.615 18.52  1  1    4    2
-## Toyota Corolla            3  34   4  71.1  65 4.22 1.835 19.90  1  1    4    1
-## Toyota Corona             3  22   4 120.1  97 3.70 2.465 20.01  1  0    3    1
-## Dodge Challenger          2  16   8 318.0 150 2.76 3.520 16.87  0  0    3    2
-## AMC Javelin               2  15   8 304.0 150 3.15 3.435 17.30  0  0    3    2
-## Camaro Z28                2  13   8 350.0 245 3.73 3.840 15.41  0  0    3    4
-## Pontiac Firebird          2  19   8 400.0 175 3.08 3.845 17.05  0  0    3    2
-## Fiat X1-9                 3  27   4  79.0  66 4.08 1.935 18.90  1  1    4    1
-## Porsche 914-2             2  26   4 120.3  91 4.43 2.140 16.70  0  1    5    2
-## Lotus Europa              3  30   4  95.1 113 3.77 1.513 16.90  1  1    5    2
-## Ford Pantera L            2  16   8 351.0 264 4.22 3.170 14.50  0  1    5    4
-## Ferrari Dino              2  20   6 145.0 175 3.62 2.770 15.50  0  1    5    6
-## Maserati Bora             2  15   8 301.0 335 3.54 3.570 14.60  0  1    5    8
-## Volvo 142E                3  21   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
-<pre class="r"><code>mt_cars_mean &lt;- mt_cars_changed %&gt;% 
-  #group by the mpg variable
-  dplyr::group_by(mpg) %&gt;%
-  #take the mean of it and the sum
-  summarise(mean_hp = mean(hp), number_of_rows = n())
-
-final_df &lt;- mt_cars_changed %&gt;% 
-  dplyr::left_join(mt_cars_mean, by  = c(&quot;mpg&quot; = &quot;mpg&quot;))%&gt;%
-  #select mpg, mean_hp, number_of_rows, then everything else
-  dplyr::select(mpg, mean_hp, number_of_rows, everything())</code></pre>
-<div id="visuals" class="section level4">
-<h4>Visuals</h4>
-<p>Base R has some good options with the “plot” function.<br />
-ggplot2 has some great stuff that works with dplyr.</p>
-<pre class="r"><code>library(ggplot2)</code></pre>
-<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 4.3.1</code></pre>
-<pre class="r"><code>final_df %&gt;% 
-  ggplot(aes(x = mpg, y = cyl, color = mean_hp)) + geom_point()</code></pre>
-<p><img src="data:image/png;base64,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" width="672" />
-#### Problem Solving in R It should be noted any function’s
-documentation can be brought up on the bottom right by typing
-?function.<br />
-??function will bring up all instances of it in packages installed, but
-not currently loaded into the environment.</p>
-<pre class="r"><code>?as.numeric</code></pre>
+</div>
+<div id="pause-some-tips-for-figuring-things-out." class="section level3">
+<h3>Pause : Some tips for figuring things out.</h3>
+<pre class="r"><code>#You can always use the function &quot;typeof()&quot; to check R thinks a variable is.
+typeof(&quot;hi&quot;)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="r"><code>#You can always use ? or ?? on a function to bring up explanations for how it works and what it expects.
+?data.frame #This will only come up in R-Studio under &quot;help&quot;</code></pre>
 <pre><code>## starting httpd help server ... done</code></pre>
-<pre class="r"><code>??as.numeric</code></pre>
 </div>
-<div id="obligatory" class="section level4">
-<h4>Obligatory</h4>
-<pre class="r"><code>variable_carrying_thing &lt;- &quot;hello_world&quot;
-print(&quot;hello world&quot;)</code></pre>
-<pre><code>## [1] &quot;hello world&quot;</code></pre>
-<pre class="r"><code>print(variable_carrying_thing)</code></pre>
-<pre><code>## [1] &quot;hello_world&quot;</code></pre>
-</div>
-</div>
+<div id="doing-real-work" class="section level3">
+<h3>Doing Real Work</h3>
+<p>Okay, at this point you should know a few things:<br />
+Variables hold data<br />
+Some variables are basically tables<br />
+Functions do things to data, and expect specific types of data to
+work<br />
+<br />
+Great! But let’s get to some real work.</p>
 </div>
 
 
